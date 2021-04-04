@@ -48,15 +48,18 @@ function setup() {
   });
 	
 	Engine.run(engine);
-
+ // Render.run(render);
 }
 
 function draw() {
 
   background(230);
- 
+  //frameRate(2)
+ // Engine.update(engine)
+  textSize(25);
+  text("Press Space to get a second Chance to Play!!",50 ,50);
   image(boy ,200,340,200,300);
- 
+  //Engine.update(engine)
   
 
   treeObj.display();
@@ -98,7 +101,7 @@ function mouseDragged()
 function mouseReleased()
 {
 	launcherObject.fly();
-   
+    // distance=int(dist(stoneObj.x,stoneObj.y,mango1.x,mango1.y));
 }
 
 function keyPressed() {
@@ -109,15 +112,20 @@ function keyPressed() {
   }
 
   function detectollision(lstone,lmango){
-
+	/*var collision = Matter.SAT.collides(lstone,lmango);
+	if(collision.collided){
+		console.log("collided");
+		Matter.Body.setStatic(lmango,false);	
+	}*/
   mangoBodyPosition=lmango.body.position
   stoneBodyPosition=lstone.body.position
   
   var distance=dist(stoneBodyPosition.x, stoneBodyPosition.y, mangoBodyPosition.x, mangoBodyPosition.y)
- 
+  //console.log(distance)
+ // console.log(lmango.r+lstone.r)
   	if(distance<=lmango.r+lstone.r)
     {
-     
+      //console.log(distance);
   	  Matter.Body.setStatic(lmango.body,false);
     }
 
